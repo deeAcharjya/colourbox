@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "cb_cli": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+
+ffmpeg -i song1.wav -acodec libmp3lame song1.mp3
+
+sox --i song1.wav
+
+
+Input File     : 'song1.wav'
+Channels       : 2
+Sample Rate    : 44100
+Precision      : 24-bit
+Duration       : 00:04:29.09 = 11867005 samples = 20182 CDDA sectors
+File Size      : 71.2M
+Bit Rate       : 2.12M
+Sample Encoding: 24-bit Signed Integer PCM
+
+---
+w = (11867005   ÷   44100 ) * 50 = 13455
+
+audiowaveform -i song1.wav -o song1.wav --pixels-per-second 50  -w 13500 -h 200 --background-color 000000 --waveform-color ffffffcc
+
+

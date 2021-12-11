@@ -1,0 +1,118 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+    <DockerfileRunArguments>-p 32772:80</DockerfileRunArguments>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.21" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="generatedTypes\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\components\Utilities\Utilities.csproj" />
+    <ProjectReference Include="..\components\WalletConnectSharp\WalletConnectSharp.Desktop\WalletConnectSharp.Desktop.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\AuthCredsModel.ts">
+      <Link>generatedTypes\AuthCredsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\AuthStatusModel.ts">
+      <Link>generatedTypes\AuthStatusModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\BandDetailsModel.ts">
+      <Link>generatedTypes\BandDetailsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\BandModel.ts">
+      <Link>generatedTypes\BandModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\BidDetailsModel.ts">
+      <Link>generatedTypes\BidDetailsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\BidModel.ts">
+      <Link>generatedTypes\BidModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\BidsModel.ts">
+      <Link>generatedTypes\BidsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\ChainInfoModel.ts">
+      <Link>generatedTypes\ChainInfoModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\ColorTrackDeployModel.ts">
+      <Link>generatedTypes\ColorTrackDeployModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\ImageModel.ts">
+      <Link>generatedTypes\ImageModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\LoginResponceModel.ts">
+      <Link>generatedTypes\LoginResponceModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\MediaDisplayModel.ts">
+      <Link>generatedTypes\MediaDisplayModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\NewPageDirectModel.ts">
+      <Link>generatedTypes\NewPageDirectModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\NFTDetailsModel.ts">
+      <Link>generatedTypes\NFTDetailsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\S3UploadOptionsModel.ts">
+      <Link>generatedTypes\S3UploadOptionsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\SalesInfoModel.ts">
+      <Link>generatedTypes\SalesInfoModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\SalesOrderDetailsModel.ts">
+      <Link>generatedTypes\SalesOrderDetailsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\SalesOrderModel.ts">
+      <Link>generatedTypes\SalesOrderModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\StoredImageModel.ts">
+      <Link>generatedTypes\StoredImageModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\StoredMediaModel.ts">
+      <Link>generatedTypes\StoredMediaModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\StoredTrackModel.ts">
+      <Link>generatedTypes\StoredTrackModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\TrackCalculatedModel.ts">
+      <Link>generatedTypes\TrackCalculatedModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\TrackDetailsModel.ts">
+      <Link>generatedTypes\TrackDetailsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\TrackDisplayModel.ts">
+      <Link>generatedTypes\TrackDisplayModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\TxEnumModel.ts">
+      <Link>generatedTypes\TxEnumModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\TxStatusModel.ts">
+      <Link>generatedTypes\TxStatusModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\UserDetailsModel.ts">
+      <Link>generatedTypes\UserDetailsModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\UserModel.ts">
+      <Link>generatedTypes\UserModel.ts</Link>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="..\colourbox\generatedTypes\UserWalletModel.ts">
+      <Link>generatedTypes\UserWalletModel.ts</Link>
+    </TypeScriptCompile>
+  </ItemGroup>
+
+  
+
+</Project>

@@ -1,0 +1,111 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { Web3WalletConnector, CONNECT_EVENT, ERROR_EVENT } from "@mindsorg/web3modal-ts";
+import Web3 from "web3";
+import constate from 'constate';
+
+import { ShowError, IAsyncResult, fetchJsonAsync, connectTo } from '../utils';
+
+import {
+    Button,
+    Modal,
+    FormControl,
+    Input,
+    HStack, VStack, TextArea, Image,
+    Text, Spinner, Center, useTheme, useColorMode,
+    Wrap, Icon, Box, KeyboardAvoidingView
+} from "native-base";
+
+export const [Web3Provider, useWeb3Modal] = constate(
+    useWeb3,
+    v => v.web3Modal,
+);
+
+const providerOptions = {
+    /* See Provider Options Section *
+    authereum: {
+        package: Authereum
+    },
+    torus: {
+        package: Torus
+    },
+*/
+};
+
+type Web3withAddress = {
+    web3?: Web3;
+    address?: string;
+}
+
+
+function useWeb3() {
+
+    const [web3Async, setWeb3] = useState<IAsyncResult<Web3withAddress>>();
+
+    const web3Modal = new Web3WalletConnector({
+        network: "ropsten", // optional
+
+        cacheProvider: false, // optional
+        providerOptions, // required
+        disableInjectedProvider: true, // optional. For MetaMask / Brave / Opera.
+    });
+
+    web3Modal.providerController.on(CONNECT_EVENT, async p => {
+
+        try {
+
+            setWeb3({ isLoading: true });
+            /*
+            const done = await p.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: "0x3" }]
+            });
+        */
+
+            const web3 = new Web3(p);
+
+            const myAccounts = await web3.eth.getAccounts();
+
+            if (!myAccounts?.length) {
+                throw new Error('no wallet found');
+            }
+
+
+            console.log(`wallet address = ${myAccounts[0]}`);
+
+
+
+            setWeb3({ result: { web3, address: myAccounts[0] } });
+
+        } catch (error) {
+            setWeb3({ error: error as Error });
+        }
+
+
+    });
+
+    web3Modal.providerController.on(ERROR_EVENT, p => {
+        debugger;
+
+        const h = p;
+        console.log(h);
+    });
+
+    return { web3Modal };
+
+}
+
+export function WalletSelector() {
+    const Web3Wallets = useWeb3Modal();
+
+    return <Wrap direction="row" justify="center" space={4}>
+
+        {Web3Wallets.providers.map(pr => <Button variant="unstyled" key={pr.name}>
+            <HStack >
+                <Image source={{uri:pr.logo?.toString()}} alt={pr.name} w={100} h={100}/>
+                <Text>{pr.name}</Text>
+            </HStack>
+        </Button>
+        )}
+
+    </Wrap>;
+}
